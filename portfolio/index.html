@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Fake Job Detection Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-mark">
+        <span class="logo-icon">🛡</span>
+        <div class="logo-text">
+          <span class="logo-title">AI Fake Job</span>
+          <span class="logo-sub">Detection Platform</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#stack">Tech Stack</a>
+        <a href="#features">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="#impact">Impact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="hero-pill">AI Cybersecurity · Job Scam Protection</div>
+          <h1>AI Fake Job Detection Platform</h1>
+          <p class="hero-sub">
+            A modern AI-powered platform that uses natural language processing and deep learning
+            to detect fraudulent job postings and protect job seekers from online scams.
+          </p>
+          <div class="hero-actions">
+            <a href="#demo" class="btn btn-primary">Explore Live Demo</a>
+            <a href="#footer" class="btn btn-ghost">View Project Repository</a>
+          </div>
+          <div class="hero-metas">
+            <div class="meta-item">
+              <span class="meta-label">Model</span>
+              <span class="meta-value">RoBERTa · Hugging Face</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Accuracy Target</span>
+              <span class="meta-value">≈ 95% on curated dataset</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Focus</span>
+              <span class="meta-value">AI · Cybersecurity · NLP</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span class="status-dot safe"></span>
+              <span>Real‑time Job Risk Scanner</span>
+            </div>
+            <div class="hero-score">
+              <div class="score-ring">
+                <div class="score-value">12</div>
+              </div>
+              <div class="score-meta">
+                <span class="score-label">Fraud Risk Score</span>
+                <span class="score-safe">Job likely safe</span>
+              </div>
+            </div>
+            <div class="hero-signals">
+              <div class="signal safe">✔ No advance payment requested</div>
+              <div class="signal safe">✔ Verified company domain email</div>
+              <div class="signal warn">⚠ Review salary details manually</div>
+            </div>
+            <div class="hero-footer-text">Designed to act as an intelligent firewall between job seekers and fake recruiters.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section id="problem" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Problem Statement</h2>
+          <p>Online job scams are evolving faster than traditional manual review processes.</p>
+        </div>
+        <div class="card-grid single">
+          <article class="card card-outline">
+            <h3>Rising Threat of Fake Job Postings</h3>
+            <p>
+              Every year, thousands of job seekers fall victim to fraudulent job postings that
+              promise unrealistic salaries, request upfront payments, or harvest sensitive
+              personal information. These scams are often professional-looking, highly targeted,
+              and extremely difficult to distinguish from legitimate opportunities.
+            </p>
+            <p>
+              Traditional job boards rely heavily on manual moderation and user reports, which
+              do not scale to the volume and speed of modern phishing and scam campaigns.
+              Job seekers need automated, intelligent protection that can analyze job content in
+              real time and surface hidden red flags before damage occurs.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section id="solution" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>AI‑Driven Solution</h2>
+          <p>An intelligent platform that reads and understands job descriptions like a security expert.</p>
+        </div>
+        <div class="card-grid four">
+          <article class="card card-soft">
+            <div class="card-icon blue">🤖</div>
+            <h3>AI Classification</h3>
+            <p>
+              Fine‑tuned RoBERTa model trained on real and fake job datasets to predict whether a job
+              posting is legitimate or fraudulent.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon cyan">🔍</div>
+            <h3>Suspicious Keyword Detection</h3>
+            <p>
+              NLP-based keyword and phrase analysis detects scam indicators such as advance fees,
+              unrealistic earnings, and urgent hiring language.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon purple">💸</div>
+            <h3>Salary Anomaly Detection</h3>
+            <p>
+              Rule‑assisted model flags unusually high compensation structures and inconsistent
+              salary patterns that often accompany fake postings.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon green">📧</div>
+            <h3>Recruiter Email Verification</h3>
+            <p>
+              Checks whether recruiter emails use trusted corporate domains instead of free
+              or disposable email providers commonly used in scams.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section id="workflow" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>System Workflow</h2>
+          <p>From raw job posting to actionable fraud risk score in seconds.</p>
+        </div>
+        <div class="workflow">
+          <div class="workflow-step">
+            <div class="step-badge">1</div>
+            <h3>User Submission</h3>
+            <p>Job seeker pastes a job description or job URL into the platform interface.</p>
+          </div>
+          <div class="workflow-arrow">➜</div>
+          <div class="workflow-step">
+            <div class="step-badge">2</div>
+            <h3>Text Extraction</h3>
+            <p>System extracts and cleans text from the description or web page, removing noise and markup.</p>
+          </div>
+          <div class="workflow-arrow">➜</div>
+          <div class="workflow-step">
+            <div class="step-badge">3</div>
+            <h3>AI Analysis</h3>
+            <p>Fine‑tuned RoBERTa model and heuristic detectors analyze linguistic patterns and metadata.</p>
+          </div>
+          <div class="workflow-arrow">➜</div>
+          <div class="workflow-step">
+            <div class="step-badge">4</div>
+            <h3>Risk Scoring</h3>
+            <p>Platform generates a fraud risk score, verdict (safe / suspicious), and human‑readable signals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="stack" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Technology Stack</h2>
+          <p>A modern, production‑ready stack built for AI and security.</p>
+        </div>
+        <div class="card-grid three">
+          <article class="card card-tech">
+            <div class="card-icon blue">💻</div>
+            <h3>Frontend</h3>
+            <p>
+              React‑based interface with modern JSX components, responsive layout, and animated
+              UI built for fast, intuitive analysis workflows.
+            </p>
+            <span class="tech-tags">React · Modern CSS · Responsive UI</span>
+          </article>
+          <article class="card card-tech">
+            <div class="card-icon cyan">⚙️</div>
+            <h3>Backend & APIs</h3>
+            <p>
+              Node/Express and Python services orchestrate text extraction, API calls, and secure
+              communication with AI inference endpoints.
+            </p>
+            <span class="tech-tags">Node.js · Express · REST APIs</span>
+          </article>
+          <article class="card card-tech">
+            <div class="card-icon purple">🧠</div>
+            <h3>AI & Model Layer</h3>
+            <p>
+              RoBERTa‑based classifier deployed through the Hugging Face ecosystem with custom
+              fine‑tuning and evaluation pipelines.
+            </p>
+            <span class="tech-tags">RoBERTa · Transformers · Hugging Face</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Key Features</h2>
+          <p>Focused on real‑world protection for job seekers.</p>
+        </div>
+        <div class="card-grid four">
+          <article class="card card-soft">
+            <div class="card-icon blue">🛡</div>
+            <h3>AI Job Fraud Detection</h3>
+            <p>Classifies job postings as safe or potentially fraudulent using fine‑tuned NLP models.</p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon cyan">🔗</div>
+            <h3>Job URL Scanning</h3>
+            <p>Fetches content from job URLs, extracts readable text, and evaluates risk in real time.</p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon purple">🧾</div>
+            <h3>Suspicious Keyword Detection</h3>
+            <p>Highlights spam‑like language, fee requests, and other phrases commonly used in scams.</p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon green">✅</div>
+            <h3>Recruiter Email Verification</h3>
+            <p>Detects whether recruiter emails use trustworthy corporate domains or free providers.</p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon red">📊</div>
+            <h3>Fraud Risk Scoring</h3>
+            <p>Generates a clear numerical risk score with safe/alert thresholds for quick decision‑making.</p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon cyan">📜</div>
+            <h3>Explainable Signals</h3>
+            <p>Provides human‑readable explanations for each decision to build user trust and transparency.</p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon blue">⚡</div>
+            <h3>Real‑Time Analysis</h3>
+            <p>Optimized pipeline delivers fraud insights in under a few seconds per job posting.</p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon purple">🌐</div>
+            <h3>Scalable Architecture</h3>
+            <p>Designed to integrate with job boards, ATS systems, and browser extensions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO / PREVIEWS -->
+    <section id="demo" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Project Demonstration</h2>
+          <p>Preview of the AI Fake Job Detection Platform interface.</p>
+        </div>
+        <div class="demo-layout">
+          <div class="demo-frame primary">
+            <div class="demo-label">Dashboard Overview</div>
+            <div class="demo-mock main-mock">
+              <div class="demo-bar"></div>
+              <div class="demo-row">
+                <div class="demo-card-safe">Safe Job Analysis</div>
+                <div class="demo-card-risk">Fraud Alert</div>
+              </div>
+              <div class="demo-row small">
+                <div class="demo-chip"></div>
+                <div class="demo-chip"></div>
+                <div class="demo-chip"></div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-side">
+            <div class="demo-frame">
+              <div class="demo-label">Job Description Input</div>
+              <div class="demo-mock"></div>
+            </div>
+            <div class="demo-frame">
+              <div class="demo-label">Risk Signals Panel</div>
+              <div class="demo-mock"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section id="impact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Impact</h2>
+          <p>Combining AI and cybersecurity to protect people at scale.</p>
+        </div>
+        <div class="card-grid two">
+          <article class="card card-soft">
+            <h3>Protecting Job Seekers</h3>
+            <p>
+              By automatically detecting high‑risk job postings, the platform helps job seekers
+              avoid financial loss, identity theft, and emotional stress caused by recruitment scams.
+            </p>
+            <p>
+              The system acts as a personal security analyst for every candidate, flagging
+              anomalies long before they become incidents.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <h3>Advancing AI in Cybersecurity</h3>
+            <p>
+              The project demonstrates how modern NLP models like RoBERTa can be applied beyond
+              sentiment or topic detection, directly contributing to real‑world cybersecurity use cases.
+            </p>
+            <p>
+              It showcases a full pipeline: dataset curation, model fine‑tuning, risk scoring, and
+              human‑centered explanation of AI decisions.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE ENHANCEMENTS -->
+    <section id="future" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Future Enhancements</h2>
+          <p>Planned improvements to expand coverage and intelligence.</p>
+        </div>
+        <div class="card-grid three">
+          <article class="card card-soft">
+            <div class="card-icon cyan">🧩</div>
+            <h3>Browser Extension</h3>
+            <p>
+              Integrate as a browser add‑on that automatically scans job listings on popular
+              platforms and highlights risk directly in the user’s browser.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon purple">🌍</div>
+            <h3>Multi‑Language Support</h3>
+            <p>
+              Extend the model to support multilingual job postings and region‑specific scam
+              patterns across global markets.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon blue">🔗</div>
+            <h3>Job Platform Integrations</h3>
+            <p>
+              Provide APIs and webhooks that job boards and ATS systems can use to automatically
+              vet postings before they go live.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="logo-mark small">
+          <span class="logo-icon">🛡</span>
+          <div class="logo-text">
+            <span class="logo-title">AI Fake Job</span>
+            <span class="logo-sub">Detection Platform</span>
+          </div>
+        </div>
+        <p class="footer-copy">
+          Portfolio project showcasing an AI‑powered cybersecurity solution for detecting fake
+          job postings using modern NLP and machine learning.
+        </p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Project</h4>
+          <a href="#demo">Live Demo</a>
+          <a href="#stack">Technology Stack</a>
+          <a href="#features">Key Features</a>
+        </div>
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <a href="#">GitHub Repository</a>
+          <a href="#">Technical Documentation</a>
+          <a href="#">Model Card (Hugging Face)</a>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <a href="mailto:your.email@example.com">your.email@example.com</a>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© <span id="year"></span> AI Fake Job Detection Platform · All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
