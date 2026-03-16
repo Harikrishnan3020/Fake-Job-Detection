@@ -20,7 +20,10 @@
           <span class="logo-sub">Detection Platform</span>
         </div>
       </div>
-      <nav class="nav-links">
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
         <a href="#problem">Problem</a>
         <a href="#solution">Solution</a>
         <a href="#workflow">Workflow</a>
@@ -35,7 +38,7 @@
   <main>
     <!-- HERO -->
     <section class="hero" id="top">
-      <div class="container hero-inner">
+      <div class="container hero-inner reveal in-view">
         <div class="hero-copy">
           <div class="hero-pill">AI Cybersecurity · Job Scam Protection</div>
           <h1>AI Fake Job Detection Platform</h1>
@@ -90,7 +93,7 @@
 
     <!-- PROBLEM -->
     <section id="problem" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>Problem Statement</h2>
           <p>Online job scams are evolving faster than traditional manual review processes.</p>
@@ -117,7 +120,7 @@
 
     <!-- SOLUTION -->
     <section id="solution" class="section section-alt">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>AI‑Driven Solution</h2>
           <p>An intelligent platform that reads and understands job descriptions like a security expert.</p>
@@ -161,7 +164,7 @@
 
     <!-- WORKFLOW -->
     <section id="workflow" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>System Workflow</h2>
           <p>From raw job posting to actionable fraud risk score in seconds.</p>
@@ -196,7 +199,7 @@
 
     <!-- TECH STACK -->
     <section id="stack" class="section section-alt">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>Technology Stack</h2>
           <p>A modern, production‑ready stack built for AI and security.</p>
@@ -235,7 +238,7 @@
 
     <!-- FEATURES -->
     <section id="features" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>Key Features</h2>
           <p>Focused on real‑world protection for job seekers.</p>
@@ -285,9 +288,32 @@
       </div>
     </section>
 
+    <!-- METRICS SNAPSHOT -->
+    <section id="metrics" class="section section-alt">
+      <div class="container reveal">
+        <div class="metrics-row">
+          <div class="metric">
+            <span class="metric-label">Jobs in training set</span>
+            <span class="metric-value">10,000+</span>
+            <span class="metric-note">Curated mix of real and fake postings</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Target accuracy</span>
+            <span class="metric-value">≈ 95%</span>
+            <span class="metric-note">On a held‑out validation dataset</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Analysis latency</span>
+            <span class="metric-value">&lt; 3s</span>
+            <span class="metric-note">End‑to‑end for a typical job posting</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- DEMO / PREVIEWS -->
     <section id="demo" class="section section-alt">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>Project Demonstration</h2>
           <p>Preview of the AI Fake Job Detection Platform interface.</p>
@@ -319,12 +345,96 @@
             </div>
           </div>
         </div>
+        <div class="scan-sim">
+          <div class="scan-sim-header">
+            <h3>Interactive Scan Simulator</h3>
+            <p>Three example jobs showing how the platform rates different postings at a glance.</p>
+          </div>
+          <div class="scan-sim-grid">
+            <article class="scan-card safe">
+              <div class="scan-card-meta">
+                <span class="scan-tag">SAFE</span>
+                <span class="scan-score">Risk score: 08</span>
+              </div>
+              <h4>Software Engineer · Public Company</h4>
+              <p>Clear role description, realistic salary range, corporate email domain, no upfront fees.</p>
+              <ul>
+                <li>No payment requests</li>
+                <li>Verified company website</li>
+                <li>Standard interview process</li>
+              </ul>
+            </article>
+            <article class="scan-card medium">
+              <div class="scan-card-meta">
+                <span class="scan-tag">REVIEW</span>
+                <span class="scan-score">Risk score: 47</span>
+              </div>
+              <h4>Remote Data Entry · High Pay</h4>
+              <p>Fully remote, above‑average pay and minimal requirements. Some language suggests urgency.</p>
+              <ul>
+                <li>"No experience required" phrasing</li>
+                <li>Generic webmail contact</li>
+                <li>Recommend manual verification</li>
+              </ul>
+            </article>
+            <article class="scan-card high">
+              <div class="scan-card-meta">
+                <span class="scan-tag">HIGH RISK</span>
+                <span class="scan-score">Risk score: 92</span>
+              </div>
+              <h4>Work From Home · Daily Payouts</h4>
+              <p>Unrealistic salary, asks for "processing fee" and uses messaging apps for interviews.</p>
+              <ul>
+                <li>Advance payment requested</li>
+                <li>WhatsApp‑only communication</li>
+                <li>Promises extremely high daily income</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISION / POSITIONING -->
+    <section id="vision" class="section">
+      <div class="container reveal">
+        <div class="section-header">
+          <h2>Vision & Product Positioning</h2>
+          <p>Designing an AI firewall for the global job market, not just another demo.</p>
+        </div>
+        <div class="card-grid three">
+          <article class="card card-soft">
+            <div class="card-icon blue">🌐</div>
+            <h3>Defense at Internet Scale</h3>
+            <p>
+              Treat every job board, messaging app, and email as an untrusted network. The platform is
+              built as a zero‑trust layer that can sit in front of any talent pipeline and continuously
+              evaluate risk as postings appear.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon purple">🚀</div>
+            <h3>AI‑First Detection Engine</h3>
+            <p>
+              Instead of relying on static rules, the system leans on fine‑tuned transformers that learn
+              from new scam patterns. Rules are used only to explain and harden decisions, not to limit them.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon cyan">🏗</div>
+            <h3>Platform, Not Just a Tool</h3>
+            <p>
+              Architected to plug into job boards, ATS systems, and browser extensions through APIs and
+              webhooks, so organizations can ship fraud detection into their own user flows without friction.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- IMPACT -->
     <section id="impact" class="section">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>Impact</h2>
           <p>Combining AI and cybersecurity to protect people at scale.</p>
@@ -356,9 +466,70 @@
       </div>
     </section>
 
+    <!-- USE CASES -->
+    <section id="usecases" class="section section-alt">
+      <div class="container reveal">
+        <div class="section-header">
+          <h2>Who This Platform Is For</h2>
+          <p>Different users, one goal: stop fake jobs before they spread.</p>
+        </div>
+        <div class="card-grid three">
+          <article class="card card-soft">
+            <div class="card-icon blue">👤</div>
+            <h3>Job Seekers</h3>
+            <p>
+              Quickly scan suspicious postings before applying. Get an instant risk score and a
+              clear explanation of why a job looks safe or dangerous.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon cyan">📋</div>
+            <h3>Job Boards</h3>
+            <p>
+              Integrate the scanner into listing pipelines to automatically flag high‑risk posts
+              and reduce scam content on the platform.
+            </p>
+          </article>
+          <article class="card card-soft">
+            <div class="card-icon purple">🏢</div>
+            <h3>Companies & ATS</h3>
+            <p>
+              Protect your brand by verifying that jobs posted under your name are legitimate and
+              consistent with your internal hiring process.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT CREATOR -->
+    <section id="about" class="section section-alt">
+      <div class="container reveal">
+        <div class="section-header">
+          <h2>About the Creator</h2>
+          <p>Blending AI, cybersecurity, and product thinking into one project.</p>
+        </div>
+        <div class="card-grid single">
+          <article class="card card-soft">
+            <h3>Your Name</h3>
+            <p>
+              AI and software engineer focused on building practical defenses against real‑world
+              threats. This project was designed end‑to‑end: data pipeline, model training,
+              backend orchestration, and a polished product‑style interface.
+            </p>
+            <p>
+              Areas of interest include NLP for security, fraud detection, and tools that help
+              everyday users stay safe online. Open to roles where AI is applied to meaningful,
+              high‑impact problems.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- FUTURE ENHANCEMENTS -->
     <section id="future" class="section section-alt">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-header">
           <h2>Future Enhancements</h2>
           <p>Planned improvements to expand coverage and intelligence.</p>
@@ -394,7 +565,7 @@
   </main>
 
   <footer id="footer" class="site-footer">
-    <div class="container footer-inner">
+    <div class="container footer-inner reveal">
       <div class="footer-brand">
         <div class="logo-mark small">
           <span class="logo-icon">🛡</span>
@@ -438,6 +609,42 @@
   <script>
     // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Scroll reveal observer
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealElements.forEach((el) => {
+      if (!el.classList.contains('in-view')) {
+        observer.observe(el);
+      }
+    });
   </script>
 </body>
 </html>
