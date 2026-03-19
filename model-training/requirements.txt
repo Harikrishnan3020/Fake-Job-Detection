@@ -1,8 +1,11 @@
+numpy
 transformers
 sentence-transformers
 scikit-learn
 joblib
 shap
+datasets
+huggingface_hub
 fastapi
 uvicorn
-numpy
+torch

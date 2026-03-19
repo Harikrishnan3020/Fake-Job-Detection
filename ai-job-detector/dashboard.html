@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobGuard AI Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:#060912; color:#f9fafb; min-height:100vh; }
+    .shell { min-height:100vh; display:flex; flex-direction:column; }
+    .nav { height:56px; padding:0 1.5rem; border-bottom:1px solid rgba(148,163,184,0.4); display:flex; align-items:center; justify-content:space-between; background:rgba(15,23,42,0.98); position:sticky; top:0; z-index:10; }
+    .nav-left { display:flex; align-items:center; gap:.6rem; font-weight:600; }
+    .nav-pill { font-size:.7rem; padding:2px 8px; border-radius:999px; background:rgba(96,165,250,0.12); color:#60a5fa; }
+    .nav-right { font-size:.8rem; color:#9ca3af; }
+    .main { flex:1; padding:2rem 1.5rem 2.5rem; max-width:960px; margin:0 auto; }
+    .heading { margin-bottom:1.5rem; }
+    .heading h1 { font-size:1.6rem; margin-bottom:.35rem; }
+    .heading p { font-size:.9rem; color:#9ca3af; }
+    .layout { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:1.5rem; align-items:flex-start; }
+    .card { background:rgba(15,23,42,0.96); border:1px solid rgba(148,163,184,0.35); border-radius:1rem; padding:1.25rem 1.4rem; box-shadow:0 18px 40px rgba(15,23,42,0.5); }
+    .card-title { font-size:.9rem; font-weight:600; margin-bottom:.75rem; display:flex; justify-content:space-between; align-items:center; }
+    .label { font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:#9ca3af; margin-bottom:.25rem; }
+    textarea, input[type="url"] { width:100%; border-radius:.6rem; border:1px solid rgba(148,163,184,0.5); background:rgba(15,23,42,0.8); color:#e5e7eb; font-size:.85rem; padding:.65rem .75rem; resize:vertical; min-height:120px; }
+    input[type="url"] { min-height:auto; }
+    textarea:focus, input[type="url"]:focus { outline:none; border-color:#60a5fa; box-shadow:0 0 0 1px rgba(59,130,246,0.8); }
+    .or { display:flex; align-items:center; gap:.75rem; font-size:.75rem; color:#6b7280; margin:.9rem 0; }
+    .or::before,.or::after { content:""; flex:1; height:1px; background:rgba(31,41,55,1); }
+    .btn-primary { margin-top:1rem; width:100%; border:none; border-radius:.7rem; padding:.7rem 1.1rem; background:linear-gradient(135deg,#60a5fa,#6366f1); color:white; font-size:.9rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.45rem; }
+    .btn-primary:disabled { opacity:.6; cursor:not-allowed; }
+    .status { font-size:.8rem; color:#f97373; margin-top:.4rem; }
+    .result-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
+    .badge { padding:3px 9px; border-radius:999px; font-size:.7rem; font-weight:600; display:inline-flex; align-items:center; gap:.3rem; }
+    .badge-safe { background:rgba(16,185,129,0.12); color:#6ee7b7; border:1px solid rgba(16,185,129,0.4); }
+    .badge-fraud { background:rgba(248,113,113,0.12); color:#fca5a5; border:1px solid rgba(248,113,113,0.4); }
+    .score { font-size:1.4rem; font-weight:700; }
+    .score-label { font-size:.7rem; color:#9ca3af; }
+    .signals { margin-top:1rem; border-top:1px dashed rgba(55,65,81,0.8); padding-top:.9rem; }
+    .signal-item { font-size:.8rem; color:#e5e7eb; margin-bottom:.35rem; display:flex; gap:.4rem; }
+    .signal-dot { font-size:.9rem; }
+    .history { margin-top:1.5rem; }
+    .history h2 { font-size:.9rem; margin-bottom:.5rem; }
+    .history-row { font-size:.8rem; color:#9ca3af; padding:.4rem 0; border-bottom:1px solid rgba(31,41,55,1); display:flex; justify-content:space-between; gap:.75rem; }
+    .history-snippet { flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .pill-small { padding:2px 7px; border-radius:999px; font-size:.7rem; }
+    .pill-safe { background:rgba(16,185,129,0.15); color:#6ee7b7; }
+    .pill-fraud { background:rgba(248,113,113,0.15); color:#fca5a5; }
+    @media (max-width:768px){ .layout{grid-template-columns:1fr;} .main{padding:1.5rem 1rem 2rem;} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="nav">
+      <div class="nav-left">
+        <span>🛡</span>
+        <span>JobGuard AI Dashboard</span>
+        <span class="nav-pill">Live risk analysis</span>
+      </div>
+      <div class="nav-right">Signed in · demo session</div>
+    </header>
+
+    <main class="main">
+      <section class="heading">
+        <h1>Analyze a job posting</h1>
+        <p>Paste a job description or URL. The dashboard will call your backend at <code>/analyze</code> and show the verdict, confidence, and risk signals.</p>
+      </section>
+
+      <section class="layout">
+        <div class="card">
+          <div class="card-title">
+            <span>Input</span>
+            <span style="font-size:.75rem;color:#9ca3af;">Powered by your Node API</span>
+          </div>
+          <form id="analyze-form">
+            <label class="label" for="job-text">Job description</label>
+            <textarea id="job-text" placeholder="Paste the full job description, responsibilities, requirements, and contact details..."></textarea>
+
+            <div class="or"><span>or</span></div>
+
+            <label class="label" for="job-url">Job URL</label>
+            <input id="job-url" type="url" placeholder="https://example.com/job/senior-engineer" />
+
+            <div id="error" class="status" style="display:none;"></div>
+
+            <button class="btn-primary" type="submit" id="analyze-btn">
+              <span id="btn-icon">🔍</span>
+              <span id="btn-label">Analyze posting</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="card" id="result-card" style="display:none;">
+          <div class="card-title"><span>Result</span></div>
+          <div class="result-header">
+            <div>
+              <div id="verdict-pill" class="badge">
+                <span id="verdict-emoji">●</span>
+                <span id="verdict-text">Verdict</span>
+              </div>
+              <div id="summary" style="font-size:.8rem;color:#9ca3af;margin-top:.4rem;"></div>
+            </div>
+            <div style="text-align:right;">
+              <div class="score" id="confidence">--%</div>
+              <div class="score-label">AI confidence</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="label">Risk score (0–100)</div>
+            <div style="height:8px;border-radius:999px;background:rgba(31,41,55,1);overflow:hidden;">
+              <div id="risk-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#4ade80,#f97316,#ef4444);"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:.25rem;font-size:.7rem;color:#9ca3af;">
+              <span>Low</span><span>High</span>
+            </div>
+          </div>
+
+          <div class="signals" id="signals" style="display:none;">
+            <div class="label" style="margin-bottom:.4rem;">Detected signals</div>
+            <div id="signals-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="history" id="history" style="display:none;">
+        <h2>Recent analyses</h2>
+        <div id="history-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const form = document.getElementById('analyze-form');
+    const jobTextEl = document.getElementById('job-text');
+    const jobUrlEl = document.getElementById('job-url');
+    const errorEl = document.getElementById('error');
+    const btn = document.getElementById('analyze-btn');
+    const btnIcon = document.getElementById('btn-icon');
+    const btnLabel = document.getElementById('btn-label');
+
+    const resultCard = document.getElementById('result-card');
+    const verdictPill = document.getElementById('verdict-pill');
+    const verdictEmoji = document.getElementById('verdict-emoji');
+    const verdictText = document.getElementById('verdict-text');
+    const summary = document.getElementById('summary');
+    const confidence = document.getElementById('confidence');
+    const riskBar = document.getElementById('risk-bar');
+    const signalsSection = document.getElementById('signals');
+    const signalsList = document.getElementById('signals-list');
+
+    const historySection = document.getElementById('history');
+    const historyList = document.getElementById('history-list');
+    const historyItems = [];
+
+    async function callBackend(text, url){
+      const res = await fetch('/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, url })
+      });
+      const data = await res.json();
+      if(!res.ok || data.error){
+        throw new Error(data.error || `Backend error ${res.status}`);
+      }
+      return data; // { verdict, confidence, riskScore, signals, summary }
+    }
+
+    function setLoading(isLoading){
+      btn.disabled = isLoading;
+      if(isLoading){
+        btnIcon.textContent = '⏳';
+        btnLabel.textContent = 'Analyzing...';
+      } else {
+        btnIcon.textContent = '🔍';
+        btnLabel.textContent = 'Analyze posting';
+      }
+    }
+
+    function renderResult(data, snippet){
+      resultCard.style.display = 'block';
+      const isSafe = data.verdict === 'safe';
+      verdictPill.className = 'badge ' + (isSafe ? 'badge-safe' : 'badge-fraud');
+      verdictEmoji.textContent = isSafe ? '✓' : '⚠';
+      verdictText.textContent = isSafe ? 'Likely legitimate' : 'Potentially fraudulent';
+      summary.textContent = data.summary || '';
+      confidence.textContent = (data.confidence ?? '--') + '%';
+      const risk = Math.max(0, Math.min(100, data.riskScore ?? 0));
+      riskBar.style.width = risk + '%';
+
+      const sigs = Array.isArray(data.signals) ? data.signals : [];
+      signalsList.innerHTML = '';
+      if(sigs.length){
+        signalsSection.style.display = 'block';
+        sigs.slice(0,5).forEach(s => {
+          const row = document.createElement('div');
+          row.className = 'signal-item';
+          const dot = document.createElement('span');
+          dot.className = 'signal-dot';
+          dot.textContent = '•';
+          const text = document.createElement('span');
+          text.textContent = s.text || '';
+          row.appendChild(dot);
+          row.appendChild(text);
+          signalsList.appendChild(row);
+        });
+      } else {
+        signalsSection.style.display = 'none';
+      }
+
+      if(snippet){
+        historyItems.unshift({
+          snippet,
+          verdict: data.verdict,
+          confidence: data.confidence
+        });
+        while(historyItems.length > 5) historyItems.pop();
+
+        historySection.style.display = 'block';
+        historyList.innerHTML = '';
+        historyItems.forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'history-row';
+          const left = document.createElement('div');
+          left.className = 'history-snippet';
+          left.textContent = item.snippet;
+          const right = document.createElement('div');
+          const pill = document.createElement('span');
+          pill.className = 'pill-small ' + (item.verdict === 'safe' ? 'pill-safe' : 'pill-fraud');
+          pill.textContent = item.verdict === 'safe' ? 'safe' : 'fraud';
+          const conf = document.createElement('span');
+          conf.style.marginLeft = '.35rem';
+          conf.textContent = (item.confidence ?? '--') + '%';
+          right.appendChild(pill);
+          right.appendChild(conf);
+          row.appendChild(left);
+          row.appendChild(right);
+          historyList.appendChild(row);
+        });
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const text = jobTextEl.value.trim();
+      const url = jobUrlEl.value.trim();
+      if(!text && !url){
+        errorEl.textContent = 'Enter a job description or a URL.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      errorEl.style.display = 'none';
+      setLoading(true);
+      try {
+        const data = await callBackend(text, url);
+        const snippetSource = text || url;
+        const snippet = snippetSource.length > 80 ? snippetSource.slice(0,77) + '...' : snippetSource;
+        renderResult(data, snippet);
+      } catch(err){
+        errorEl.textContent = err.message || 'Analysis failed.';
+        errorEl.style.display = 'block';
+      } finally {
+        setLoading(false);
+      }
+    });
+  </script>
+</body>
+</html>

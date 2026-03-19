@@ -24,13 +24,10 @@
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#workflow">Workflow</a>
-        <a href="#stack">Tech Stack</a>
+        <a href="#top">Home</a>
         <a href="#features">Features</a>
         <a href="#demo">Demo</a>
-        <a href="#impact">Impact</a>
+        <a href="#" class="nav-login" id="nav-login-link">Login</a>
       </nav>
     </div>
   </header>
@@ -43,12 +40,12 @@
           <div class="hero-pill">AI Cybersecurity · Job Scam Protection</div>
           <h1>AI Fake Job Detection Platform</h1>
           <p class="hero-sub">
-            A modern AI-powered platform that uses natural language processing and deep learning
-            to detect fraudulent job postings and protect job seekers from online scams.
+            Scan any job posting in seconds. Our AI flags scams, high-risk language, and salary red flags
+            so you can focus on real opportunities.
           </p>
           <div class="hero-actions">
             <a href="#demo" class="btn btn-primary">Explore Live Demo</a>
-            <a href="#footer" class="btn btn-ghost">View Project Repository</a>
+            <button type="button" class="btn btn-ghost" id="hero-login-btn">Login to Dashboard</button>
           </div>
           <div class="hero-metas">
             <div class="meta-item">
@@ -92,7 +89,7 @@
     </section>
 
     <!-- PROBLEM -->
-    <section id="problem" class="section">
+    <section id="problem" class="section hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>Problem Statement</h2>
@@ -119,7 +116,7 @@
     </section>
 
     <!-- SOLUTION -->
-    <section id="solution" class="section section-alt">
+    <section id="solution" class="section section-alt hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>AI‑Driven Solution</h2>
@@ -163,7 +160,7 @@
     </section>
 
     <!-- WORKFLOW -->
-    <section id="workflow" class="section">
+    <section id="workflow" class="section hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>System Workflow</h2>
@@ -198,7 +195,7 @@
     </section>
 
     <!-- TECH STACK -->
-    <section id="stack" class="section section-alt">
+    <section id="stack" class="section section-alt hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>Technology Stack</h2>
@@ -289,7 +286,7 @@
     </section>
 
     <!-- METRICS SNAPSHOT -->
-    <section id="metrics" class="section section-alt">
+    <section id="metrics" class="section section-alt hidden-section">
       <div class="container reveal">
         <div class="metrics-row">
           <div class="metric">
@@ -311,92 +308,24 @@
       </div>
     </section>
 
-    <!-- DEMO / PREVIEWS -->
+    <!-- DEMO / LIVE DASHBOARD -->
     <section id="demo" class="section section-alt">
       <div class="container reveal">
         <div class="section-header">
-          <h2>Project Demonstration</h2>
-          <p>Preview of the AI Fake Job Detection Platform interface.</p>
+          <h2>Live AI Job Scanner</h2>
+          <p>Paste a job description or URL below and watch the AI dashboard analyze it in real time.</p>
         </div>
         <div class="demo-layout">
-          <div class="demo-frame primary">
-            <div class="demo-label">Dashboard Overview</div>
-            <div class="demo-mock main-mock">
-              <div class="demo-bar"></div>
-              <div class="demo-row">
-                <div class="demo-card-safe">Safe Job Analysis</div>
-                <div class="demo-card-risk">Fraud Alert</div>
-              </div>
-              <div class="demo-row small">
-                <div class="demo-chip"></div>
-                <div class="demo-chip"></div>
-                <div class="demo-chip"></div>
-              </div>
-            </div>
-          </div>
-          <div class="demo-side">
-            <div class="demo-frame">
-              <div class="demo-label">Job Description Input</div>
-              <div class="demo-mock"></div>
-            </div>
-            <div class="demo-frame">
-              <div class="demo-label">Risk Signals Panel</div>
-              <div class="demo-mock"></div>
-            </div>
-          </div>
-        </div>
-        <div class="scan-sim">
-          <div class="scan-sim-header">
-            <h3>Interactive Scan Simulator</h3>
-            <p>Three example jobs showing how the platform rates different postings at a glance.</p>
-          </div>
-          <div class="scan-sim-grid">
-            <article class="scan-card safe">
-              <div class="scan-card-meta">
-                <span class="scan-tag">SAFE</span>
-                <span class="scan-score">Risk score: 08</span>
-              </div>
-              <h4>Software Engineer · Public Company</h4>
-              <p>Clear role description, realistic salary range, corporate email domain, no upfront fees.</p>
-              <ul>
-                <li>No payment requests</li>
-                <li>Verified company website</li>
-                <li>Standard interview process</li>
-              </ul>
-            </article>
-            <article class="scan-card medium">
-              <div class="scan-card-meta">
-                <span class="scan-tag">REVIEW</span>
-                <span class="scan-score">Risk score: 47</span>
-              </div>
-              <h4>Remote Data Entry · High Pay</h4>
-              <p>Fully remote, above‑average pay and minimal requirements. Some language suggests urgency.</p>
-              <ul>
-                <li>"No experience required" phrasing</li>
-                <li>Generic webmail contact</li>
-                <li>Recommend manual verification</li>
-              </ul>
-            </article>
-            <article class="scan-card high">
-              <div class="scan-card-meta">
-                <span class="scan-tag">HIGH RISK</span>
-                <span class="scan-score">Risk score: 92</span>
-              </div>
-              <h4>Work From Home · Daily Payouts</h4>
-              <p>Unrealistic salary, asks for "processing fee" and uses messaging apps for interviews.</p>
-              <ul>
-                <li>Advance payment requested</li>
-                <li>WhatsApp‑only communication</li>
-                <li>Promises extremely high daily income</li>
-              </ul>
-            </article>
+          <div class="demo-frame primary" style="grid-column: 1 / -1;">
+            <div class="demo-label">Interactive Dashboard</div>
+            <div id="ai-job-scanner" class="demo-mock" style="border-style: solid; border-color: rgba(56,189,248,0.3);"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- VISION / POSITIONING -->
-    <section id="vision" class="section">
+    <section id="vision" class="section hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>Vision & Product Positioning</h2>
@@ -433,7 +362,7 @@
     </section>
 
     <!-- IMPACT -->
-    <section id="impact" class="section">
+    <section id="impact" class="section hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>Impact</h2>
@@ -467,7 +396,7 @@
     </section>
 
     <!-- USE CASES -->
-    <section id="usecases" class="section section-alt">
+    <section id="usecases" class="section section-alt hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>Who This Platform Is For</h2>
@@ -503,7 +432,7 @@
     </section>
 
     <!-- ABOUT CREATOR -->
-    <section id="about" class="section section-alt">
+    <section id="about" class="section section-alt hidden-section">
       <div class="container reveal">
         <div class="section-header">
           <h2>About the Creator</h2>
@@ -528,7 +457,9 @@
     </section>
 
     <!-- FUTURE ENHANCEMENTS -->
-    <section id="future" class="section section-alt">
+    <section id="future" class="section section-alt hidden-section">
+      
+      <!-- content kept but visually hidden to keep the page lighter -->
       <div class="container reveal">
         <div class="section-header">
           <h2>Future Enhancements</h2>
@@ -563,6 +494,37 @@
       </div>
     </section>
   </main>
+
+  <!-- Login overlay -->
+  <div class="login-overlay" id="login-overlay" aria-hidden="true">
+    <div class="login-backdrop"></div>
+    <div class="login-card" role="dialog" aria-modal="true" aria-labelledby="login-title">
+      <button class="login-close" type="button" id="login-close-btn" aria-label="Close login">×</button>
+      <div class="logo-mark small" style="margin-bottom: 1rem;">
+        <span class="logo-icon">🛡</span>
+        <div class="logo-text">
+          <span class="logo-title">AI Fake Job</span>
+          <span class="logo-sub">Secure Login</span>
+        </div>
+      </div>
+      <h2 class="login-title" id="login-title">Welcome back</h2>
+      <p class="login-subtitle">Sign in to access your job scan history and saved reports.</p>
+      <form class="login-form" id="login-form" autocomplete="on">
+        <div class="login-field">
+          <label class="login-label" for="login-email">Email</label>
+          <input id="login-email" class="login-input" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="login-field">
+          <label class="login-label" for="login-password">Password</label>
+          <input id="login-password" class="login-input" type="password" placeholder="••••••••" required />
+        </div>
+        <div class="login-footer">
+          <span class="login-hint">Demo-only UI · No real accounts created.</span>
+          <button class="btn btn-primary" type="submit">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <footer id="footer" class="site-footer">
     <div class="container footer-inner reveal">
@@ -606,6 +568,201 @@
     </div>
   </footer>
 
+  <!-- React + Babel for embedded AI dashboard -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');`;
+
+    const styles = `
+      /* Scoped override so it only affects the embedded app */
+      #ai-job-scanner-app * { box-sizing: border-box; margin: 0; padding: 0; }
+    `;
+
+    function RiskGauge({ score }) {
+      const r = 48;
+      const circumference = Math.PI * r;
+      const pct = score / 100;
+      const dashOffset = circumference * (1 - pct);
+      const color = score < 35 ? "#10d98a" : score < 65 ? "#ffb347" : "#ff4d6a";
+
+      return (
+        <svg width="120" height="80" viewBox="0 0 120 80" className="gauge-svg">
+          <path d={`M 12 60 A ${r} ${r} 0 0 1 108 60`} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="8" strokeLinecap="round"/>
+          <path d={`M 12 60 A ${r} ${r} 0 0 1 108 60`} fill="none" stroke={color} strokeWidth="8" strokeLinecap="round"
+            strokeDasharray={circumference} strokeDashoffset={dashOffset}
+            style={{transition: "stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1), stroke 0.5s"}}/>
+          <text x="60" y="54" textAnchor="middle" fill={color} fontSize="20" fontFamily="Syne, sans-serif" fontWeight="700">{score}</text>
+          <text x="60" y="70" textAnchor="middle" fill="#7a85a8" fontSize="9">RISK SCORE</text>
+        </svg>
+      );
+    }
+
+    function SignalCard({ type, text }) {
+      const icons = { warning: "⚠", keyword: "🔍", salary: "💸", email: "📧", info: "ℹ" };
+      const colors = { warning: "#ff4d6a", keyword: "#ffb347", salary: "#ff8c42", email: "#a78bfa", info: "#6378ff" };
+      return (
+        <div className="signal-card">
+          <span className="signal-icon" style={{color: colors[type] || colors.info}}>{icons[type] || icons.info}</span>
+          <span className="signal-text" dangerouslySetInnerHTML={{__html: text}}/>
+        </div>
+      );
+    }
+
+    async function analyzeWithBackend(text, url) {
+      const res = await fetch("/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, url }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        const message = data.error || `Backend error: ${res.status}`;
+        throw new Error(message);
+      }
+
+      return data;
+    }
+
+    function JobGuardApp() {
+      const [jobText, setJobText] = useState("");
+      const [jobUrl, setJobUrl] = useState("");
+      const [loading, setLoading] = useState(false);
+      const [result, setResult] = useState(null);
+      const [error, setError] = useState("");
+      const progressRef = useRef(null);
+
+      useEffect(() => {
+        if (result && progressRef.current) {
+          setTimeout(() => {
+            if (progressRef.current) progressRef.current.style.width = result.confidence + "%";
+          }, 100);
+        }
+      }, [result]);
+
+      const handleAnalyze = async () => {
+        if (!jobText.trim() && !jobUrl.trim()) {
+          setError("Please enter a job description or URL.");
+          return;
+        }
+        setError("");
+        setResult(null);
+        setLoading(true);
+        try {
+          const data = await analyzeWithBackend(jobText, jobUrl);
+          setResult(data);
+        } catch (e) {
+          const msg = e && e.message ? e.message : "Analysis failed. Please check your input and try again.";
+          setError(msg);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      const confidenceColor = result ? (result.verdict === "safe" ? "#10d98a" : "#ff4d6a") : "#6378ff";
+      const scanSteps = [
+        "Parsing job description...",
+        "Scanning for red flags...",
+        "Checking salary claims...",
+        "Verifying employer signals...",
+        "Generating report...",
+      ];
+      const [scanStep, setScanStep] = useState(0);
+
+      useEffect(() => {
+        if (!loading) { setScanStep(0); return; }
+        const interval = setInterval(() => setScanStep((s) => (s + 1) % scanSteps.length), 900);
+        return () => clearInterval(interval);
+      }, [loading]);
+
+      return (
+        <div id="ai-job-scanner-app" style={{fontFamily: 'DM Sans, system-ui, sans-serif', color: '#f0f2ff'}}>
+          <style>{FONTS}{styles}</style>
+          <div className="analysis-section">
+            <div style={{textAlign: "center", marginBottom: "1.5rem"}}>
+              <h2 style={{fontFamily: 'Syne, sans-serif', fontSize: '1.5rem', fontWeight: 800, marginBottom: 6}}>Analyze a Job Posting</h2>
+              <p style={{color: '#7a85a8', fontSize: '0.9rem'}}>Paste a description or URL and let the AI check for scams.</p>
+            </div>
+            <div className="analysis-card">
+              <div className="input-label">Job Description</div>
+              <textarea placeholder="Paste the full job description here..." value={jobText} onChange={(e)=>setJobText(e.target.value)} style={{marginBottom:0}} />
+              <div className="or-divider">OR</div>
+              <div className="input-label">Job Posting URL</div>
+              <input className="url-input" type="url" placeholder="https://example.com/job/senior-engineer" value={jobUrl} onChange={(e)=>setJobUrl(e.target.value)} />
+              {error && <p style={{color:"#ff4d6a",fontSize:"0.8rem",marginTop:8}}>{error}</p>}
+              <button className="analyze-btn" onClick={handleAnalyze} disabled={loading}>
+                {loading ? <><div style={{width:18,height:18,border:"2px solid rgba(255,255,255,0.3)",borderTopColor:"white",borderRadius:"50%",animation:"spin 0.8s linear infinite"}}/> Analyzing...</> : <><span>🔍</span> Analyze Job Posting</>}
+              </button>
+            </div>
+
+            {loading && (
+              <div className="analysis-card" style={{marginTop:"1rem"}}>
+                <div className="scanning">
+                  <div className="scan-ring"/>
+                  <div className="scan-text">{scanSteps[scanStep]}</div>
+                  <div className="scan-dots"><div className="scan-dot"/><div className="scan-dot"/><div className="scan-dot"/></div>
+                </div>
+              </div>
+            )}
+
+            {result && !loading && (
+              <div className="result-panel">
+                <div className={`result-header ${result.verdict}`}>
+                  <div className="verdict">
+                    <div className={`verdict-icon ${result.verdict}`}>{result.verdict==="safe"?"✓":"⚠"}</div>
+                    <div>
+                      <div className={`verdict-title ${result.verdict}`}>{result.verdict==="safe"?"Likely Legitimate":"Potentially Fraudulent"}</div>
+                      <div className="verdict-sub">{result.summary}</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="result-body">
+                  <div className="metrics-grid">
+                    <div className="metric-card">
+                      <div className="metric-label">AI Confidence</div>
+                      <div className="metric-value" style={{color:confidenceColor}}>{result.confidence}%</div>
+                      <div className="progress-bar">
+                        <div className="progress-fill" ref={progressRef} style={{background:`linear-gradient(90deg, ${confidenceColor}80, ${confidenceColor})`}}/>
+                      </div>
+                    </div>
+                    <div className="metric-card">
+                      <div className="metric-label">Fraud Risk Meter</div>
+                      <div className="gauge-wrap"><RiskGauge score={result.riskScore}/></div>
+                    </div>
+                  </div>
+                  {result.signals?.length > 0 && (
+                    <>
+                      <div className="signals-title">Detected Risk Signals</div>
+                      <div className="signals-list">
+                        {result.signals.map((s, i) => (
+                          <div key={i} style={{animationDelay:`${i*0.08}s`}}>
+                            <SignalCard type={s.type} text={s.text}/>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    const scannerRoot = document.getElementById('ai-job-scanner');
+    if (scannerRoot) {
+      const root = ReactDOM.createRoot(scannerRoot);
+      root.render(<JobGuardApp />);
+    }
+  </script>
+
   <script>
     // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -627,6 +784,46 @@
         });
       });
     }
+
+    // Login overlay logic
+    const loginOverlay = document.getElementById('login-overlay');
+    const navLoginLink = document.getElementById('nav-login-link');
+    const heroLoginBtn = document.getElementById('hero-login-btn');
+    const loginCloseBtn = document.getElementById('login-close-btn');
+    const loginForm = document.getElementById('login-form');
+
+    function openLogin(event) {
+      if (event) event.preventDefault();
+      if (!loginOverlay) return;
+      loginOverlay.classList.add('open');
+      loginOverlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLogin() {
+      if (!loginOverlay) return;
+      loginOverlay.classList.remove('open');
+      loginOverlay.setAttribute('aria-hidden', 'true');
+    }
+
+    navLoginLink?.addEventListener('click', openLogin);
+    heroLoginBtn?.addEventListener('click', openLogin);
+    loginCloseBtn?.addEventListener('click', closeLogin);
+
+    loginOverlay?.addEventListener('click', (e) => {
+      if (e.target === loginOverlay) {
+        closeLogin();
+      }
+    });
+
+    loginForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeLogin();
+      // After demo login, go to full AI JobGuard dashboard inside ai-job-detector folder.
+      // Build a path that works both on localhost ("/") and on GitHub Pages ("/Fake-Job-Detection/").
+      const basePath = window.location.pathname.replace(/\/[^^/]*$/, '') || '/';
+      const target = basePath.replace(/\/$/, '') + '/ai-job-detector/dashboard.html';
+      window.location.href = target;
+    });
 
     // Scroll reveal observer
     const revealElements = document.querySelectorAll('.reveal');

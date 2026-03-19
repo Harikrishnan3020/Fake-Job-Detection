@@ -17,8 +17,8 @@ except ImportError:  # SHAP is optional at import time
     shap = None
 
 
-# Environment-configurable model identifiers
-HF_PHISH_MODEL_ID = os.getenv("HF_PHISH_MODEL_ID", "phishing-url-detection-bert-placeholder")
+# Environment-configurable model identifiers (defaults set to widely available public models)
+HF_PHISH_MODEL_ID = os.getenv("HF_PHISH_MODEL_ID", "bert-base-uncased")
 HF_XLMR_MODEL_ID = os.getenv("HF_XLMR_MODEL_ID", "xlm-roberta-base")
 HF_KEYWORD_EMB_MODEL_ID = os.getenv("HF_KEYWORD_EMB_MODEL_ID", "sentence-transformers/all-MiniLM-L6-v2")
 
@@ -251,43 +251,13 @@ class RiskEngine:
         return RiskComponentScore(name="keywords", score=risk, explanation=explanation)
 
     def _explain_with_shap(self, job: JobInput) -> Optional[Dict[str, Any]]:
-        """Very lightweight SHAP example for the text classifier.
+        """Placeholder for SHAP-based explanations.
 
-        In practice, you may want to precompute the explainer and limit text length
-        for performance. Here we just return top tokens by absolute SHAP value.
+        SHAP is optional and can be computationally heavy or fragile across
+        environments. For this runtime setup we simply skip SHAP and return
+        no explanation data.
         """
-        if shap is None:
-            return None
-
-        text = (job.text or "").strip()
-        if not text:
-            return None
-
-        # Token-level SHAP for XLM-RoBERTa classifier
-        def f(x: List[str]):
-            enc = self.xlmr_tokenizer(x, return_tensors="pt", padding=True, truncation=True, max_length=256)
-            out = self.xlmr_model(**enc)
-            return out.logits.detach().cpu().numpy()
-
-        explainer = shap.Explainer(f, shap.maskers.Text(self.xlmr_tokenizer))
-        shap_values = explainer([text])
-
-        # Extract top contributing tokens for the "fraud" class (assume index 1)
-        try:
-            values = shap_values[0, :, 1].values
-            tokens = shap_values.data[0]
-            # Pair tokens with absolute SHAP values
-            token_scores = list(zip(tokens, np.abs(values)))
-            token_scores.sort(key=lambda t: t[1], reverse=True)
-            top_tokens = token_scores[:10]
-            return {
-                "top_tokens": [
-                    {"token": tok, "importance": float(score)} for tok, score in top_tokens
-                ]
-            }
-        except Exception:
-            # If SHAP structure changes or fails, fail silently
-            return None
+        return None
 
 
 if __name__ == "__main__":
